@@ -3,7 +3,7 @@
 
 ## Équipe
 
-Sujet : [inscrivez quel service est développé par l'équipe]
+Sujet : Hotel
 Noms :
 [Remplacez ce texte par vos noms ici]
 
