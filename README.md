@@ -5,7 +5,7 @@
 
 Sujet : Hotel
 Noms :
-[Remplacez ce texte par vos noms ici]
+Zachary CLoutier-Cyr, Nicolas St-Arnault, William Lussier, Marie-Claire Uwambajimana
 
 ## Description
 
