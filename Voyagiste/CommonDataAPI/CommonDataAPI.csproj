@@ -7,6 +7,7 @@
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>..\Voyagiste</DockerfileContext>
     <UserSecretsId>2a1e535a-48b2-4f2a-91a8-bce24b579cfb</UserSecretsId>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

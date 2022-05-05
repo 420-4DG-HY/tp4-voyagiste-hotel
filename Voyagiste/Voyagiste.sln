@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32421.90
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FF47F92E-4A15-44DC-94CB-81930A9C9949}"
 EndProject
@@ -74,7 +74,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcursionDTO", "ExcursionDT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDataAPI", "CommonDataAPI\CommonDataAPI.csproj", "{10090F6B-6D98-4667-9653-8677A50F9B53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDataDTO", "CommonDataDTO\CommonDataDTO.csproj", "{53838B02-1608-44C0-AD40-2F6CC1C5ACD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonDataDTO", "CommonDataDTO\CommonDataDTO.csproj", "{53838B02-1608-44C0-AD40-2F6CC1C5ACD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
