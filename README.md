@@ -5,7 +5,7 @@
 
 Sujet : Hotel
 Noms :
-[Remplacez ce texte par vos noms ici]
+Zachary CLoutier-Cyr, Nicolas St-Arnault, William Lussier, Marie-Claire Uwambajimana, Tristan Bousquet
 
 ## Description
 
@@ -23,11 +23,11 @@ Vous devez créer le service incluant l'API, ses couches BLL, DAL, DTO et le pro
 
 ## Modalités
 
-- Le travail doit se faire impérativementen équipe (maximum 6)
+- Le travail doit se faire impérativement en équipe (maximum 6)
 - Le nom de l'équipe doit correspondre au service choisi. Vous ne pouvez pas prendre le même service qu'une autre équipe.
 - Vous devez écrire vos noms dans le fichier README.md
 - Le fonctionnement de l'API est validé à travers les pages de tests générées automatiquement par le service (Swagger).
-- Vous devez démontrer le bon fonctinnement de votre application terminée. Montrer au professeur en classe ou autre selon entente au besoin.
+- Vous devez démontrer le bon fonctionnement de votre application terminée. Montrer au professeur en classe ou autre selon entente au besoin.
 
 
 ### Barème d’évaluation
