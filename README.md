@@ -5,7 +5,7 @@
 
 Sujet : Hotel
 Noms :
-Zachary CLoutier-Cyr, Nicolas St-Arnault, William Lussier, Marie-Claire Uwambajimana
+Zachary CLoutier-Cyr, Nicolas St-Arnault, William Lussier, Marie-Claire Uwambajimana, Tristan Bousquet
 
 ## Description
 
