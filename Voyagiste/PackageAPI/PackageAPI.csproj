@@ -14,15 +14,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarAPI-Proxy\CarAPI-ServiceProxy.csproj" />
+    <ProjectReference Include="..\CarAPI\CarAPI.csproj" />
     <ProjectReference Include="..\CarDTO\CarDTO.csproj" />
+    <ProjectReference Include="..\CommonDataAPI\CommonDataAPI.csproj" />
     <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
+    <ProjectReference Include="..\CruiseAPI\CruiseAPI.csproj" />
     <ProjectReference Include="..\CruiseDTO\CruiseDTO.csproj" />
+    <ProjectReference Include="..\CustomerAPI\CustomerAPI.csproj" />
     <ProjectReference Include="..\CustomerDTO\CustomerDTO.csproj" />
+    <ProjectReference Include="..\ExcursionAPI\ExcursionAPI.csproj" />
     <ProjectReference Include="..\ExcursionDTO\ExcursionDTO.csproj" />
+    <ProjectReference Include="..\FlightAPI\FlightAPI.csproj" />
     <ProjectReference Include="..\FlightDTO\FlightDTO.csproj" />
     <ProjectReference Include="..\HotelDTO\HotelDTO.csproj" />
     <ProjectReference Include="..\PackageDTO\PackageDTO.csproj" />
+    <ProjectReference Include="..\TrainAPI\TrainAPI.csproj" />
     <ProjectReference Include="..\TrainDTO\TrainDTO.csproj" />
   </ItemGroup>
 

@@ -20,6 +20,7 @@ builder.Services.AddSingleton<ICarService, CarServiceProxy>();
 //builder.Services.AddSingleton<ICruiseDataService, CruiseServiceProxy>();
 //builder.Services.AddSingleton<IExcursionService, ExcursionServiceProxy>();
 //builder.Services.AddSingleton<ITrainService, TrainServiceProxy>();
+// IConfiguration configuration
 
 var app = builder.Build();
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using CarDTO;
 
+
 namespace CarService
 {
     public interface ICarService
@@ -12,7 +13,7 @@ namespace CarService
     {
         private readonly ILogger _logger;
 
-        public CarServiceProxy(ILogger<CarServiceProxy> logger)
+      public CarServiceProxy(ILogger<CarServiceProxy> logger)
         {
             _logger=logger;
         }
