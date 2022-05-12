@@ -13,4 +13,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
+    <ProjectReference Include="..\FlightDAL\FlightDAL.csproj" />
+    <ProjectReference Include="..\FlightDTO\FlightDTO.csproj" />
+  </ItemGroup>
+
 </Project>

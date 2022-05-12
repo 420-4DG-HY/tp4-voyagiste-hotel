@@ -13,5 +13,5 @@
     public record BirthDate(DateTime birthDate); // Éventuellement changer le setter pour arrondir et fournir les méthodes pour l'âge
     public record Person(Guid PersonId, Title? title, string firstName, string? middleName, string lastName, BirthDate? birthDate, Passport? passport);
 
-    public record Booking(Guid BookingId, Person traveler);
+    public abstract record Booking(Guid BookingId, Person traveler); // On doit typer la réservation (booking) pour l'utiliser
 }

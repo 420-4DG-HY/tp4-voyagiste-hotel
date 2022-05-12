@@ -13,4 +13,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
+    <ProjectReference Include="..\TrainDAL\TrainDAL.csproj" />
+    <ProjectReference Include="..\TrainDTO\TrainDTO.csproj" />
+  </ItemGroup>
+
 </Project>

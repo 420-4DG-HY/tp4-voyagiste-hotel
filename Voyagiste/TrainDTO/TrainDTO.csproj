@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
+    <ProjectReference Include="..\CustomerDTO\CustomerDTO.csproj" />
+  </ItemGroup>
+
 </Project>

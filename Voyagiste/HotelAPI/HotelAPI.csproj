@@ -13,4 +13,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CarAPI\CarAPI.csproj" />
+    <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
+    <ProjectReference Include="..\HotelDAL\HotelDAL.csproj" />
+    <ProjectReference Include="..\HotelDTO\HotelDTO.csproj" />
+  </ItemGroup>
+
 </Project>
