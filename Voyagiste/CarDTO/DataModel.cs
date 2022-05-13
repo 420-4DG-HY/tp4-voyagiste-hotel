@@ -10,6 +10,6 @@ namespace CarDTO
     public record Car(Guid CarId, CarRentalCompany from, CarModel model, CarSpecifications specs,string vehicleId);
 
     public record CarAvailability(Guid CarAvailabilityId,Car Car, DateTime From, DateTime To);
-    public record CarBooking(Guid CarBookingId, Car Car, DateTime From, DateTime To, Person rentedTo):Booking(CarBookingId,rentedTo); 
+    public record CarBooking(Guid CarBookingId, Car Car, DateTime From, DateTime To, Person rentedTo, DateTime BookedWhen) :Booking(CarBookingId,rentedTo, BookedWhen); 
 
 }

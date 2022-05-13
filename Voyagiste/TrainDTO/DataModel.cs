@@ -1,5 +1,4 @@
 ﻿using CommonDataDTO;
-using CustomerDTO;
 
 namespace TrainDTO
 {
@@ -13,5 +12,5 @@ namespace TrainDTO
     // Chaque départ de chaque jour doit avoir son entrée
     public record TrainSchedule(Guid TrainScheduleId, string Name, TrainLine Line, TrainStation StartStation, TrainStation EndStation, DateTime[] StationDepartureTimes );
     public record TrainAvailability(Guid TrainAvailabilityId, TrainSchedule Schedule, Seat Seat);
-    public record TrainBooking(Guid TrainBookingId, Person Passenger, TrainAvailability Availability) :Booking(TrainBookingId,Passenger);
+    public record TrainBooking(Guid TrainBookingId, Person Passenger, TrainAvailability Availability, DateTime BookedWhen) :Booking(TrainBookingId,Passenger,BookedWhen);
 }

@@ -19,6 +19,7 @@
     <ProjectReference Include="..\ExcursionDTO\ExcursionDTO.csproj" />
     <ProjectReference Include="..\FlightDTO\FlightDTO.csproj" />
     <ProjectReference Include="..\HotelDTO\HotelDTO.csproj" />
+    <ProjectReference Include="..\PackageDAL\PackageDAL.csproj" />
     <ProjectReference Include="..\PackageDTO\PackageDTO.csproj" />
     <ProjectReference Include="..\TrainDTO\TrainDTO.csproj" />
   </ItemGroup>
