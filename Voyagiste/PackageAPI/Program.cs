@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // Retiré pour ne pas avoir à gérer le certificat Docker
 
 app.UseAuthorization();
 
