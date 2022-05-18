@@ -51,7 +51,9 @@ namespace CarDAL
         /// </summary>
         public CarBooking Book(Car Car, DateTime From, DateTime To, Person rentedTo)
         {
-            return new CarBooking(new Guid(), Car, From, To, rentedTo, new DateTime());
+            var booking = new CarBooking(new Guid(), Car, From, To, rentedTo, new DateTime());
+            FakeData.GetInstance().carBookings.Add(booking);    
+            return booking;
         }
 
         /// <summary>
