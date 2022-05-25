@@ -38,4 +38,3 @@ Studio ajoutera le fichier swagger.json dans le dossier OpenAPIs du projet. Ce f
 
 À partir de ce fichier .json, on peut voir le code de proxy généré est en classe si on ouvre 
 le petit [+] devant le fichier.
-
