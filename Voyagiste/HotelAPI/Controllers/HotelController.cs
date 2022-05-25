@@ -1,56 +1,56 @@
 using Microsoft.AspNetCore.Mvc;
-using CarBLL;
-using CarDTO;
+using HotelBLL;
+using HotelDTO;
 using CommonDataDTO;
 
-namespace CarAPI.Controllers
+namespace HotelAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class HotelController : ControllerBase
     {
         readonly ILogger<HotelController> _logger;
-        readonly ICarBusinessLogic _bll;
+        readonly IHotelBusinessLogic _bll;
 
-        public HotelController(ICarBusinessLogic BusinessLogic, ILogger<HotelController> Logger)
+        public HotelController(IHotelBusinessLogic BusinessLogic, ILogger<HotelController> Logger)
         {
             _bll = BusinessLogic;
             _logger = Logger;
         }
 
-        [HttpGet("GetAvailableCarModels")]
-        public CarModel[] GetAvailableCarModels()
+        [HttpGet("GetAvailableHotelModels")]
+        public HotelModel[] GetAvailableHotelModels()
         {
-            return _bll.GetAvailableCarModels();
+            return _bll.GetAvailableHotelModels();
         }
 
-        [HttpGet("CarAvailabilities/{CarModelGuid}")]
-        public CarAvailability[] GetCarAvailabilities(Guid CarModelGuid)
+        [HttpGet("HotelAvailabilities/{HotelModelGuid}")]
+        public HotelAvailability[] GetHotelAvailabilities(Guid HotelModelGuid)
         {
-            if (CarModelGuid != null)
+            if (HotelModelGuid != null)
             {
-                CarModel? cm = _bll.GetCarModel(CarModelGuid);
+                HotelModel? cm = _bll.GetHotelModel(HotelModelGuid);
                 if (cm != null)
                 {
-                    return _bll.GetCarAvailabilities(cm);
+                    return _bll.GetHotelAvailabilities(cm);
                 }
             }
 
             // Aucun résultat
-            return new List<CarAvailability>().ToArray();
+            return new List<HotelAvailability>().ToArray();
         }
 
-        [HttpGet("Car/{CarId}")]
-        public Car? GetCar(Guid CarId)
+        [HttpGet("Hotel/{HotelId}")]
+        public Hotel? GetHotel(Guid HotelId)
         {
-            var car = _bll.GetCar(CarId);
-            return car;
+            var hotel = _bll.GetHotel(HotelId);
+            return hotel;
         }
 
         [HttpPost("Book")]
-        public CarBooking Book(Guid CarId, DateTime From, DateTime To, Person rentedTo)
+        public HotelBooking Book(Guid HotelId, DateTime From, DateTime To, Person rentedTo)
         {
-            return _bll.Book(CarId, From, To, rentedTo);
+            return _bll.Book(HotelId, From, To, rentedTo);
         }
     }
 }
