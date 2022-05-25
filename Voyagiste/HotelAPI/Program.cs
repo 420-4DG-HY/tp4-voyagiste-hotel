@@ -1,5 +1,6 @@
-global using HotelBLL;
+//global using HotelBLL;
 global using HotelDAL;
+using CarDAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IHotelDataAccess, HotelDataAccess>();
-builder.Services.AddSingleton<IHotelBusinessLogic, HotelBusinessLogic>();
+builder.Services.AddSingleton<IHotalDataAccess, HotelDataAccess>();
+//builder.Services.AddSingleton<IHotelBusinessLogic, HotelBusinessLogic>();
 
 var app = builder.Build();
 
