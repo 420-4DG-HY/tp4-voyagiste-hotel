@@ -6,7 +6,7 @@
     <ProjectGuid>ff47f92e-4a15-44dc-94cb-81930a9c9949</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://{ServiceIPAddress}{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>clients</DockerServiceName>
+    <DockerServiceName>CarService</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.yml" />

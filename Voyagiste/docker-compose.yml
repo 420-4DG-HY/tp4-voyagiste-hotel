@@ -19,20 +19,23 @@ services:
       context: .
       dockerfile: CarAPI\Dockerfile
     ports:
-      - "1443:443"
+      #- "1443:443"
       - "180:80"
 
-  # Conteneur du service "CommonDataAPI" du Voyagiste
-  # Ce service permet de standardiser les données de références communes
-  # titres de personnes, pays, noms de villes, ...
-  CommonDataService:
-    image: ${DOCKER_REGISTRY-}travel-common
-    build:
-      context: .
-      dockerfile: CommonDataAPI\Dockerfile
-    ports:
-      - "2443:443"
-      - "280:80"
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+  # La configuration du conteneur de votre service va ici
+  #
+  # Vous pouvez copier CarService et y remplacer "Car" par le 
+  # nom de votre service
+  #
+  # Vous devez ensuite ajouter les mappage de ports différents 
+  # pour ne pas avoir de conflit sur l'hôte (utilisez 2443 et 280)
+
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
+
 
   # Conteneur du service "PackageAPI" du Voyagiste
   # Ce service permet de réserver des 
@@ -45,10 +48,10 @@ services:
       context: .
       dockerfile: PackageAPI\Dockerfile
     ports:
-      - "3443:443"
+      #- "3443:443"
       - "380:80"
     depends_on:
-      - CommonDataService
+      #- CommonDataService  # Votre service doit être ajouté ici!
       - CarService
 
 # Conteneur de messagerie inter-services 
