@@ -12,9 +12,9 @@ namespace HotelDAL
 
 
         internal static readonly Hotel[] hotel = {
-            new Hotel(new Guid("4293f4da-f7c8-4998-aa41-f0c05aab2cfb"),hotelRentalCompanies[0],hotelModels[0], hotelSpecifications[0],"BTP-01"),
-            new Hotel(new Guid("54cf1439-a515-413e-a839-ae16717433d9"),hotelRentalCompanies[0],hotelModels[1], hotelSpecifications[1],"BFF-01"),
-            new Hotel(new Guid("bea09eb2-dca6-4ad2-be61-28f341b5d424"),hotelRentalCompanies[1],hotelModels[2], hotelSpecifications[2],"ABX-01")
+            new Hotel(new Guid("4293f4da-f7c8-4998-aa41-f0c05aab2cfb"),hotelRentalCompanies[0], hotelModels[0], hotelSpecifications[0],"BTP-01"),
+            new Hotel(new Guid("54cf1439-a515-413e-a839-ae16717433d9"),hotelRentalCompanies[0], hotelModels[1], hotelSpecifications[1],"BFF-01"),
+            new Hotel(new Guid("bea09eb2-dca6-4ad2-be61-28f341b5d424"),hotelRentalCompanies[1], hotelModels[2], hotelSpecifications[2],"ABX-01")
         };
 
 
