@@ -105,10 +105,10 @@ namespace CarDAL
         private FakeData()
         {
             carAvailabilities = new List<CarAvailability>();
-            carAvailabilities.Add(new CarAvailability(new Guid("56f93c48-0922-42d7-bddd-a3edd154685d"),car[0],new DateTime(2022,2,12), new DateTime(2022, 7, 1)));
+            carAvailabilities.Add(new CarAvailability(new Guid("56f93c48-0922-42d7-bddd-a3edd154685d"), car[0], new DateTime(2022, 2, 12), new DateTime(2022, 7, 1)));
             carAvailabilities.Add(new CarAvailability(new Guid("aceff190-c2cb-47a7-b773-a150173eb89f"), car[1], new DateTime(2022, 2, 12), new DateTime(2022, 7, 1)));
             carAvailabilities.Add(new CarAvailability(new Guid("10e9721a-2a9a-4d45-a86d-54dea2dce15b"), car[2], new DateTime(2022, 2, 12), new DateTime(2022, 7, 1)));
-            
+
             carBookings = new List<CarBooking>();
             bookingConfirmations = new List<BookingConfirmation>();
             bookingCancellations = new List<BookingCancellation>();

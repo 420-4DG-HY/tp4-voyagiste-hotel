@@ -52,7 +52,7 @@ namespace CarDAL
         public CarBooking Book(Car Car, DateTime From, DateTime To, Person rentedTo)
         {
             var booking = new CarBooking(new Guid(), Car, From, To, rentedTo, new DateTime());
-            FakeData.GetInstance().carBookings.Add(booking);    
+            FakeData.GetInstance().carBookings.Add(booking);
             return booking;
         }
 
@@ -63,7 +63,7 @@ namespace CarDAL
         /// </summary>
         public BookingCancellation CancelBooking(CarBooking booking)
         {
-            BookingCancellation bc = new BookingCancellation(new Guid(), booking , new DateTime());
+            BookingCancellation bc = new BookingCancellation(new Guid(), booking, new DateTime());
             FakeData.GetInstance().bookingCancellations.Add(bc);
             return bc;
         }
@@ -73,7 +73,7 @@ namespace CarDAL
             BookingCancellation? bBancel = GetBookingCancellation(booking);
             if (bBancel != null)
             {
-                string message = "Cannot confirm booking : \n" + booking +" \nBecause it has been cancelled by : \n" + bBancel;
+                string message = "Cannot confirm booking : \n" + booking + " \nBecause it has been cancelled by : \n" + bBancel;
                 _logger.LogError(message);
                 throw new Exception(message);
             }
@@ -139,7 +139,7 @@ namespace CarDAL
 
         public CarModel? GetCarModel(Guid CarModelId)
         {
-            return FakeData.carModels.Where(cm=>cm.CarModelId == CarModelId).FirstOrDefault();
+            return FakeData.carModels.Where(cm => cm.CarModelId == CarModelId).FirstOrDefault();
         }
     }
 }

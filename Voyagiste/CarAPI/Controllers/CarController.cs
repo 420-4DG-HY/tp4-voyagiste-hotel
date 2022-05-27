@@ -27,7 +27,6 @@ namespace CarAPI.Controllers
         [HttpGet("CarAvailabilities/{CarModelGuid}")]
         public CarAvailability[] GetCarAvailabilities(Guid CarModelGuid)
         {
-#pragma warning disable CS8073 // Le résultat de l'expression est toujours 'true', car une valeur de type 'Guid' n'est jamais égale à 'null' du type 'Guid?'
             if (CarModelGuid != null)
             {
                 CarModel? cm = _bll.GetCarModel(CarModelGuid);
@@ -36,7 +35,6 @@ namespace CarAPI.Controllers
                     return _bll.GetCarAvailabilities(cm);
                 }
             }
-#pragma warning restore CS8073 // Le résultat de l'expression est toujours 'true', car une valeur de type 'Guid' n'est jamais égale à 'null' du type 'Guid?'
 
             // Aucun résultat
             return new List<CarAvailability>().ToArray();
