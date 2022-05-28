@@ -2,6 +2,17 @@
 {
     public class FakeData
     {
+        private static FakeData? Singleton;
+
+        private FakeData()
+        { 
+        
+        }
+        internal static FakeData GetInstance()
+        {
+            if (Singleton == null) Singleton = new FakeData();
+            return Singleton;
+        }
         // TODO Faites des hotels simples avec peu d'étages/chambres, juste pour tester!
         // 
         // Utilisez des GUID statiques (fake) pour les distinguer
