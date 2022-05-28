@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using HotelDTO;
 using CommonDataDTO;
+using HotelDAL;
 
 namespace HotelDAL
 {

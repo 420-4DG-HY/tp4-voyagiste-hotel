@@ -16,8 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\HotelBLL\HotelBLL.csproj" />
-    <ProjectReference Include="..\HotelAPI\HotelAPI.csproj" />
+    <ProjectReference Include="..\CarAPI\CarAPI.csproj" />
     <ProjectReference Include="..\CommonDataDTO\CommonDataDTO.csproj" />
     <ProjectReference Include="..\HotelDAL\HotelDAL.csproj" />
     <ProjectReference Include="..\HotelDTO\HotelDTO.csproj" />
