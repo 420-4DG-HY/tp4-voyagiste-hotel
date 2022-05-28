@@ -6,4 +6,7 @@ namespace HotelDTO
     public record Hotel(Guid HotelId, Address HotelAddress);
     public record HotelBooking(Guid HotelBookingId, Room Room, Person Guest, DateTime BookedWhen) : Booking(HotelBookingId, Guest, BookedWhen);
 
+    //Ajouté le 2022-05-28 par Nicolas St-Arnault
+    public record HotelAvailability(Guid HotelAvailabilityId, Hotel hotel, DateTime From, DateTime To);
+
 }

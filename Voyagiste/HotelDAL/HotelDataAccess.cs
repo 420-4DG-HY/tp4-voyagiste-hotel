@@ -109,12 +109,12 @@ namespace HotelDAL
 
         public Hotel? GetHotel(Guid HotelId)
         {
-            return FakeData.hotel.Where(hotel => hotel.HotelId == HotelId).FirstOrDefault();
+            return FakeData.hotels.Where(hotel => hotel.HotelId == HotelId).FirstOrDefault();
         }
 
         public HotelAvailability[] GetHotelAvailabilities(Hotel hotel)
         {
-            return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.Hotel == hotel).ToArray();
+            return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.hotel == hotel).ToArray();
         }
 
         public HotelAvailability AddHotelAvailability(Hotel hotel, DateTime From, DateTime To)
