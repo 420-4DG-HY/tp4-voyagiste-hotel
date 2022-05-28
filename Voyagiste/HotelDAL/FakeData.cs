@@ -38,6 +38,18 @@ namespace HotelDAL
             countries.Add(new Country("France"));
             #endregion
 
+            #region Regions
+
+            #endregion
+
+            #region Cities
+
+            #endregion
+
+            #region CodePostals
+
+            #endregion
+
             #region Passports
             var passports = new List<Passport>();
             passports.Add(new Passport(new Guid(""), countries[0], "12CS12345", new DateTime(2033, 5, 13)));
@@ -51,16 +63,33 @@ namespace HotelDAL
             guests.Add(new Person(new Guid(""), titles[1], "Angelica", "Maria", "Marika", birthDates[1], passports[1]));
             #endregion
 
+            #region Addresses
+            var addresses = new List<Address>();
+            addresses.Add(new Address(new Guid(""), countries[0], regions[0], cities[0], postalCodes[0], "404, rue Chezpasou"));
+            addresses.Add(new Address(new Guid(""), countries[0], regions[1], cities[1], postalCodes[1], "405, rue Chuiou"));
+            addresses.Add(new Address(new Guid(""), countries[1], regions[2], cities[2], postalCodes[2], "505, rue Chuiperdu"));
+            #endregion
+
+            #region Hotels
+            var hotels = new List<Hotel>();
+            hotels.Add(new Hotel(new Guid(""), addresses[0]));
+            hotels.Add(new Hotel(new Guid(""), addresses[1]));
+            hotels.Add(new Hotel(new Guid(""), addresses[2]));
+
+            #endregion
+
             #region Rooms
             var rooms = new List<Room>();
-            rooms.Add();
+            rooms.Add(new Room(new Guid(""), hotels[0],"Chambre101"));
+            rooms.Add(new Room(new Guid(""), hotels[1],"Chambre202"));
+            rooms.Add(new Room(new Guid(""), hotels[2],"Chambre303"));
             #endregion
+            #region HotelBookings
             var hotelBookings = new List<HotelBooking>();
-            var addresses = new List<Address>();
-            var hotels = new List<Hotel>();
-            hotels.Add(new Hotel(new Guid(""), address[0]));
-            new Room(new Guid(""), hotel[0], "Chambre101");
-            new HotelBooking(new Guid(""), country[0], guest[0], new DateTime(2022, 5, 10));
+            hotelBookings.Add(new HotelBooking(new Guid(""), rooms[0], guests[0], new DateTime(2022, 5, 11)));
+            hotelBookings.Add(new HotelBooking(new Guid(""), rooms[1], guests[1], new DateTime(2023, 10, 12)));
+            hotelBookings.Add(new HotelBooking(new Guid(""), rooms[2], guests[3], new DateTime(2024, 12, 13)));
+            #endregion
         }
         internal static FakeData GetInstance()
         {
