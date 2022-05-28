@@ -13,5 +13,20 @@ using HotelDAL;
 
 namespace HotelDAL
 {
-    
+    public interface IHotelDataAccess
+    {
+        public Hotel GetHotel(Guid HotelId);
+        public HotelAvailability[] GetHotelAvailabilities(Hotel hotel);
+        public HotelAvailability AddHotelAvailability(Hotel hotel, DateTime From, DateTime To);
+        public HotelBooking? GetHotelBooking(Guid HotelBookingId);
+        public HotelBooking[] GetHotelBookings(Person rentedTo);
+        public HotelBooking[] GetHotelBookings(Hotel hotel);
+        public HotelBooking Book(Hotel hotel, DateTime From, DateTime To, Person rentedTo);
+
+        public BookingConfirmation ConfirmBooking(HotelBooking booking);
+        public BookingConfirmation? GetBookingConfirmation(HotelBooking booking);
+
+        public BookingCancellation CancelBooking(HotelBooking booking);
+        public BookingCancellation? GetBookingCancellation(HotelBooking booking);
+    }
 }
