@@ -111,9 +111,9 @@ namespace HotelDAL
         private FakeData()
         {
             hotelAvailabilities = new List<HotelAvailability>();
-            hotelAvailabilities.Add(new HotelAvailability(new Guid("d3062793-8a01-4e8a-beba-2db3a9cf0871"), hotels[0],  new DateTime(2022, 5, 11), new DateTime(2022, 7, 1)));
-            hotelAvailabilities.Add(new HotelAvailability(new Guid("c901d3e7-17ee-44f8-8787-842a5e72184f"), hotels[1],  new DateTime(2023, 5, 12), new DateTime(2022, 7, 2)));
-            hotelAvailabilities.Add(new HotelAvailability(new Guid("52b54352-7415-4723-bc11-5caebaba9f8c"), hotels[2], new DateTime(2024, 5, 13), new DateTime(2022, 7, 3)));
+            hotelAvailabilities.Add(new HotelAvailability(new Guid("d3062793-8a01-4e8a-beba-2db3a9cf0871"), rooms[0],  new DateTime(2022, 5, 11), new DateTime(2022, 7, 1)));
+            hotelAvailabilities.Add(new HotelAvailability(new Guid("c901d3e7-17ee-44f8-8787-842a5e72184f"), rooms[1],  new DateTime(2023, 5, 12), new DateTime(2022, 7, 2)));
+            hotelAvailabilities.Add(new HotelAvailability(new Guid("52b54352-7415-4723-bc11-5caebaba9f8c"), rooms[2], new DateTime(2024, 5, 13), new DateTime(2022, 7, 3)));
 
             hotelBookings = new List<HotelBooking>();
             bookingConfirmations = new List<BookingConfirmation>();

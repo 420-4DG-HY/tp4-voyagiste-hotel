@@ -16,12 +16,12 @@ namespace HotelDAL
     {
         public Hotel GetHotel(Guid HotelId);
         public HotelAvailability[] GetHotelAvailabilities(Hotel hotel);
-        public HotelAvailability AddHotelAvailability(Hotel hotel, DateTime From, DateTime To);
+        public HotelAvailability AddHotelAvailability(Room room, DateTime From, DateTime To);
         public HotelBooking? GetHotelBooking(Guid HotelBookingId);
         public HotelBooking[] GetHotelBookings(Person rentedTo);
         public HotelBooking[] GetHotelBookings(Hotel hotel);
         public HotelBooking Book(Room room, Person guest, DateTime bookedWhen);
-
+        public Room? GetRoom(Hotel hotel);
         public BookingConfirmation ConfirmBooking(HotelBooking booking);
         public BookingConfirmation? GetBookingConfirmation(HotelBooking booking);
 
@@ -40,11 +40,6 @@ namespace HotelDAL
             _logger = logger;
         }
 
-        /// <summary>
-        /// Enregistre une réservation de voiture
-        /// 
-        /// Attention, les disponibilités ne sont pas gérés par le DAL
-        /// </summary>
         public HotelBooking Book(Room room, Person guest, DateTime bookedWhen)
         {
             var booking = new HotelBooking(new Guid(), room, guest, bookedWhen);
@@ -52,11 +47,6 @@ namespace HotelDAL
             return booking;
         }
 
-        /// <summary>
-        /// Enregistre une cancellation de voiture
-        /// 
-        /// Attention, la gestion du retrait de booking et les remises en disponibilités ne sont pas gérés par le DAL
-        /// </summary>
         public BookingCancellation CancelBooking(HotelBooking booking)
         {
             BookingCancellation bc = new BookingCancellation(new Guid(), booking, new DateTime());
@@ -111,14 +101,19 @@ namespace HotelDAL
             return FakeData.hotels.Where(hotel => hotel.HotelId == HotelId).FirstOrDefault();
         }
 
-        public HotelAvailability[] GetHotelAvailabilities(Hotel hotel)
+        public Room? GetRoom(Hotel hotel)
         {
-            return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.hotel == hotel).ToArray();
+            return (Room?)FakeData.rooms.Where(r => r.Hotel == hotel);
         }
 
-        public HotelAvailability AddHotelAvailability(Hotel hotel, DateTime From, DateTime To)
+        public HotelAvailability[] GetHotelAvailabilities(Hotel hotel)
         {
-            HotelAvailability ca = new HotelAvailability(new Guid(), hotel, From, To);
+            return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.room.Hotel == hotel).ToArray();
+        }
+
+        public HotelAvailability AddHotelAvailability(Room room, DateTime From, DateTime To)
+        {
+            HotelAvailability ca = new HotelAvailability(new Guid(), room, From, To);
             FakeData.GetInstance().hotelAvailabilities.Add(ca);
             return ca;
         }
