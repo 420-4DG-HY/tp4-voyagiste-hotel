@@ -21,14 +21,6 @@ namespace HotelBLL
     }
 
 
-
-
-
-
-
-
-
-
     public class HotelBusinessLogic : IHotelBusinessLogic
     {
         readonly ILogger<HotelBusinessLogic> _logger;
