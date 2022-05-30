@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-//using HotelBLL;
+using HotelBLL;
 using HotelDTO;
 using CommonDataDTO;
 
@@ -18,28 +18,6 @@ namespace HotelAPI.Controllers
             _logger = Logger;
         }
 
-        //[HttpGet("GetAvailableHotelModels")]
-        //public HotelModel[] GetAvailableHotelModels()
-        //{
-        //    return _bll.GetAvailableHotelModels();
-        //}
-
-        //[HttpGet("CarAvailabilities/{CarModelGuid}")]
-        //public HotelAvailability[] GetHotelAvailabilities(Guid HotelModelGuid)
-        //{
-        //    if (HotelModelGuid != null)
-        //    {
-        //        HotelModel? hm = _bll.GetCarModel(HotelModelGuid);
-        //        if (hm != null)
-        //        {
-        //            return _bll.GetCarAvailabilities(hm);
-        //        }
-        //    }
-
-        //    // Aucun résultat
-        //    return new List<HotelAvailability>().ToArray();
-        //}
-
         [HttpGet("Hotel/{HotelId}")]
         public Hotel? GetHotel(Guid HotelId)
         {
@@ -47,10 +25,25 @@ namespace HotelAPI.Controllers
             return hotel;
         }
 
-        [HttpPost("Book")]
-        public HotelBooking Book(Guid HotelId, DateTime From, DateTime To, Person rentedTo)
+        [HttpGet("Hotel/{HotelId}/{RoomId}")]
+        public Room? GetRoom(Guid HotelId, Guid RoomId)
         {
-            return _bll.Book(HotelId, From, To, rentedTo);
+            var hotel = _bll.GetHotel(HotelId);
+            var room = _bll.GetRoom(hotel, RoomId);
+            return room;
+        }
+
+        [HttpGet("Hotel/{HotelBookingId}")]
+        public HotelBooking? GetHotelBooking(Guid HotelBookingId)
+        {
+            var hotel = _bll.GetHotelBooking(HotelBookingId);
+            return hotel;
+        }
+
+        [HttpPost("Book")]
+        public HotelBooking Book(Guid HotelId, Guid RoomId, DateTime From, DateTime To, DateTime rentedTo, Person guest)
+        {
+            return _bll.Book(HotelId, RoomId, From, To, rentedTo, guest);
         }
     }
 

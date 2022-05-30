@@ -8,21 +8,22 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using HotelDTO;
+
 using CommonDataDTO;
-using HotelDAL;
 
 namespace HotelDAL
 {
     public interface IHotelDataAccess
     {
         public Hotel GetHotel(Guid HotelId);
-        public HotelAvailability[] GetHotelAvailabilities(Hotel hotel);
+        public Room? GetRoom(Hotel hotel, Guid RoomId);
+        public HotelAvailability[] GetHotelAvailabilities(Room room);
         public HotelAvailability AddHotelAvailability(Room room, DateTime From, DateTime To);
         public HotelBooking? GetHotelBooking(Guid HotelBookingId);
         public HotelBooking[] GetHotelBookings(Person rentedTo);
         public HotelBooking[] GetHotelBookings(Hotel hotel);
-        public HotelBooking Book(Room room, Person guest, DateTime bookedWhen);
-        public Room? GetRoom(Hotel hotel);
+        public HotelBooking Book(Room room, Person guest, DateTime From, DateTime To, DateTime bookedWhen);
+
         public BookingConfirmation ConfirmBooking(HotelBooking booking);
         public BookingConfirmation? GetBookingConfirmation(HotelBooking booking);
 
@@ -41,9 +42,9 @@ namespace HotelDAL
             _logger = logger;
         }
 
-        public HotelBooking Book(Room room, Person guest, DateTime bookedWhen)
+        public HotelBooking Book(Room room, Person guest, DateTime From, DateTime To, DateTime bookedWhen)
         {
-            var booking = new HotelBooking(new Guid(), room, guest, bookedWhen);
+            var booking = new HotelBooking(new Guid(), room, From, To, guest, bookedWhen);
             FakeData.GetInstance().hotelBookings.Add(booking);
             return booking;
         }
@@ -102,14 +103,14 @@ namespace HotelDAL
             return FakeData.hotels.Where(hotel => hotel.HotelId == HotelId).FirstOrDefault();
         }
 
-        public Room? GetRoom(Hotel hotel)
+        public Room? GetRoom(Hotel hotel, Guid RoomId)
         {
-            return (Room?)FakeData.rooms.Where(r => r.Hotel == hotel);
+            return (Room?)FakeData.rooms.Where(r => (r.Hotel == hotel) && (r.RoomId == RoomId));
         }
 
-        public HotelAvailability[] GetHotelAvailabilities(Hotel hotel)
+        public HotelAvailability[] GetHotelAvailabilities(Room room)
         {
-            return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.room.Hotel == hotel).ToArray();
+            return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.room == room).ToArray();
         }
 
         public HotelAvailability AddHotelAvailability(Room room, DateTime From, DateTime To)

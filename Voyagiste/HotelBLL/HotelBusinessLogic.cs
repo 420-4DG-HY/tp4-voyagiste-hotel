@@ -10,13 +10,13 @@ namespace HotelBLL
     {
         //public HotelModel[] GetAvailableHotelModels();
         public Hotel? GetHotel(Guid HotelId);
-        public Room? GetRoom(Hotel hotel);
-        public HotelAvailability[] GetHotelAvailabilities(HotelModel hotelModel);
+        public Room? GetRoom(Hotel hotel, Guid RoomId);
+        //public HotelAvailability[] GetHotelAvailabilities(HotelModel hotelModel);
         public HotelBooking? GetHotelBooking(Guid HotelBookingId);
         //public HotelModel? GetHotelModel(Guid HotelModelId);
 
 
-        public HotelBooking Book(Guid HotelId, DateTime From, DateTime To, Person rentedTo);
+        public HotelBooking Book(Guid HotelId, Guid RoomId, DateTime From, DateTime To, DateTime rentedTo, Person guest);
 
         public BookingConfirmation ConfirmBooking(HotelBooking hotelBooking);
         public BookingConfirmation? GetBookingConfirmation(HotelBooking hotelBooking);
@@ -31,39 +31,40 @@ namespace HotelBLL
         readonly ILogger<HotelBusinessLogic> _logger;
         readonly IHotelDataAccess _dal;
 
-        public CarBusinessLogic(IHotelDataAccess DataAccess, ILogger<HotelBusinessLogic> Logger)
+        public HotelBusinessLogic(IHotelDataAccess DataAccess, ILogger<HotelBusinessLogic> Logger)
         {
             _dal = DataAccess;
             _logger = Logger;
         }
 
-        public HotelBooking Book(Guid CarId, DateTime From, DateTime To, Person rentedTo)
+        public HotelBooking Book(Guid HotelId, Guid RoomId, DateTime From, DateTime To, DateTime rentedTo, Person guest)
         {
             Hotel? hotel = _dal.GetHotel(HotelId);
             if (hotel == null)
             {
-                string message = "Invalid Car GUID : " + CarId;
+                string message = "Invalid Hotel GUID : " + HotelId;
                 _logger.LogError(message);
                 throw new Exception(message);
             }
-            return _dal.Book(hotel, From, To, rentedTo);
+            Room? room = _dal.GetRoom(hotel, RoomId);
+            return _dal.Book(room, guest, From, To, rentedTo);
         }
 
         public BookingCancellation CancelBooking(HotelBooking hb)
         {
             // Libère la plage horaire de cette réservation
-            _dal.AddCarAvailability(hb.Car, hb.From, hb.To);
-            CleanupAvailabilities(hb.Car);
+            _dal.AddHotelAvailability(hb.Room, hb.From, hb.To);
+            CleanupAvailabilities(hb.Room);
 
             return _dal.CancelBooking(hb);
         }
 
-        void CleanupAvailabilities(Hotel hotel)
+        void CleanupAvailabilities(Room room)
         {
             // ici on devrait éventuellement fusionner les disponibilités adjacentes
             // Une forme de défragmentation du calendrier après une annulation ou un retour prématuré de véhicule...
 
-            HotelAvailability[]? availabilities = _dal.GetHotelAvailabilities(hotel);
+            HotelAvailability[]? availabilities = _dal.GetHotelAvailabilities(room);
 
             // On identifie les disponibilités adjacentes 
             // On les supprime et crée une nouvelle disponibilité qui les remplace
@@ -75,29 +76,29 @@ namespace HotelBLL
             return _dal.ConfirmBooking(hb);
         }
 
-        public HotelModel[] GetAvailableCarModels()
+        //public HotelModel[] GetAvailableHotelModels()
+        //{
+        //    return _dal.GetAvailableCarModels();
+        //}
+
+        public BookingCancellation? GetBookingCancellation(HotelBooking hotelBooking)
         {
-            return _dal.GetAvailableCarModels();
+            return _dal.GetBookingCancellation(hotelBooking);
         }
 
-        public BookingCancellation? GetBookingCancellation(HotelBooking carBooking)
+        public BookingConfirmation? GetBookingConfirmation(HotelBooking hotelBooking)
         {
-            return _dal.GetBookingCancellation(carBooking);
+            return _dal.GetBookingConfirmation(hotelBooking);
         }
 
-        public BookingConfirmation? GetBookingConfirmation(HotelBooking carBooking)
-        {
-            return _dal.GetBookingConfirmation(carBooking);
-        }
+        //public HotelAvailability[] GetHotelAvailabilities(HotelModel model)
+        //{
+        //    return _dal.GetHotelAvailabilities(model);
+        //}
 
-        public HotelAvailability[] GetCarAvailabilities(HotelModel model)
+        public HotelBooking? GetHotelBooking(Guid HotelBookingId)
         {
-            return _dal.GetCarAvailabilities(model);
-        }
-
-        public CarBooking? GetCarBooking(Guid CarBookingId)
-        {
-            return _dal.GetCarBooking(CarBookingId);
+            return _dal.GetHotelBooking(HotelBookingId);
         }
 
         public HotelBooking[] GetHotelBookings(Hotel hotel)
@@ -105,14 +106,19 @@ namespace HotelBLL
             return _dal.GetHotelBookings(hotel);
         }
 
-        public Hotel? GetHotel(Guid CarId)
+        public Hotel? GetHotel(Guid HotelId)
         {
-            return _dal.GetHotel(CarId);
+            return _dal.GetHotel(HotelId);
         }
 
-        public HotelModel? GetCarModel(Guid HotelModelId)
+        //public HotelModel? GetHotelModel(Guid HotelModelId)
+        //{
+        //    return _dal.GetHotelModel(HotelModelId);
+        //}
+
+        public Room? GetRoom(Hotel hotel, Guid RoomId)
         {
-            return _dal.GetHotelModel(HotelModelId);
+            return _dal.GetRoom(hotel, RoomId);
         }
         #endregion
     }
