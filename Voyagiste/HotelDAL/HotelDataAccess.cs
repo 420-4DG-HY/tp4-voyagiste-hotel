@@ -15,8 +15,10 @@ namespace HotelDAL
 {
     public interface IHotelDataAccess
     {
+        public Hotel[] GetHotel();
         public Hotel GetHotel(Guid HotelId);
         public Room? GetRoom(Hotel hotel, Guid RoomId);
+        public Hotel[] GetAllHotelAvailabilities();
         public HotelAvailability[] GetHotelAvailabilities(Room room);
         public HotelAvailability AddHotelAvailability(Room room, DateTime From, DateTime To);
         public HotelBooking? GetHotelBooking(Guid HotelBookingId);
@@ -48,14 +50,12 @@ namespace HotelDAL
             FakeData.GetInstance().hotelBookings.Add(booking);
             return booking;
         }
-
         public BookingCancellation CancelBooking(HotelBooking booking)
         {
             BookingCancellation bc = new BookingCancellation(new Guid(), booking, new DateTime());
             FakeData.GetInstance().bookingCancellations.Add(bc);
             return bc;
         }
-
         public BookingConfirmation ConfirmBooking(HotelBooking booking)
         {
             BookingCancellation? bBancel = GetBookingCancellation(booking);
@@ -73,46 +73,45 @@ namespace HotelDAL
             }
         }
 
+
         public HotelBooking? GetHotelBooking(Guid HotelBookingId)
         {
             return FakeData.GetInstance().hotelBookings?.Where(cb => cb.HotelBookingId == HotelBookingId).FirstOrDefault();
         }
-
         public HotelBooking[] GetHotelBookings(Hotel hotel)
         {
             return FakeData.GetInstance().hotelBookings.Where(cb => cb.Room.Hotel == hotel).ToArray();
         }
-
-        public BookingConfirmation? GetBookingConfirmation(HotelBooking booking)
-        {
-            return FakeData.GetInstance().bookingConfirmations.Where(bc => bc.Booking == booking).FirstOrDefault();
-        }
-
-        public BookingCancellation? GetBookingCancellation(HotelBooking booking)
-        {
-            return FakeData.GetInstance().bookingCancellations.Where(bc => bc.Booking == booking).FirstOrDefault();
-        }
-
         public HotelBooking[] GetHotelBookings(Person guest)
         {
             return FakeData.GetInstance().hotelBookings.Where(cb => cb.Guest == guest).ToArray();
         }
 
+
+        public BookingConfirmation? GetBookingConfirmation(HotelBooking booking)
+        {
+            return FakeData.GetInstance().bookingConfirmations.Where(bc => bc.Booking == booking).FirstOrDefault();
+        }
+        public BookingCancellation? GetBookingCancellation(HotelBooking booking)
+        {
+            return FakeData.GetInstance().bookingCancellations.Where(bc => bc.Booking == booking).FirstOrDefault();
+        }
+
+
         public Hotel? GetHotel(Guid HotelId)
         {
             return FakeData.hotels.Where(hotel => hotel.HotelId == HotelId).FirstOrDefault();
         }
-
         public Room? GetRoom(Hotel hotel, Guid RoomId)
         {
             return (Room?)FakeData.rooms.Where(r => (r.Hotel == hotel) && (r.RoomId == RoomId));
         }
 
+
         public HotelAvailability[] GetHotelAvailabilities(Room room)
         {
             return FakeData.GetInstance().hotelAvailabilities.Where(ca => ca.room == room).ToArray();
         }
-
         public HotelAvailability AddHotelAvailability(Room room, DateTime From, DateTime To)
         {
             HotelAvailability ca = new HotelAvailability(new Guid(), room, From, To);
@@ -120,5 +119,30 @@ namespace HotelDAL
             return ca;
         }
 
+
+        public Hotel[] GetAllHotelAvailabilities()
+        {
+            List<Hotel> listHotels = new List<Hotel>();
+
+            foreach (var h in FakeData.hotels)
+            {
+                if (!FakeData.GetInstance().hotelAvailabilities.Exists(x => x.HotelAvailabilityId == h.HotelId))
+                    listHotels.Add(h);
+            }
+
+            return listHotels.ToArray();
+        }
+
+
+        public Hotel[] GetHotel()
+        {
+            //Test pour savoir si la méthode est fonctionnel (juste FakeData est null)
+            //Hotel[] hotels = {
+            //    new Hotel(new Guid("54973543-6cf3-4c88-8b47-f48d87bcf392"), new Address(new Guid("6e746e0d-1b8d-494a-9359-34bfc155f58f"), new Country("Canada"), new Region("Oussa"), new City("Laval"), new PostalCode("B3RR3B"), "404, rue Chezpasou"))
+            //};
+            //return hotels.Distinct().ToArray();
+
+            return FakeData.hotels.Distinct().ToArray();
+        }
     }
 }

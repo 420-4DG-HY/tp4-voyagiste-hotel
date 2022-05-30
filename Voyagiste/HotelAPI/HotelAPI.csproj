@@ -22,10 +22,11 @@
     <ProjectReference Include="..\ExcursionDTO\ExcursionDTO.csproj" />
     <ProjectReference Include="..\FlightDTO\FlightDTO.csproj" />
     <ProjectReference Include="..\HotelBLL\HotelBLL.csproj" />
-    <ProjectReference Include="..\HotelDAL\HotelDAL.csproj" />
     <ProjectReference Include="..\HotelDTO\HotelDTO.csproj" />
     <ProjectReference Include="..\PackageDTO\PackageDTO.csproj" />
     <ProjectReference Include="..\TrainDTO\TrainDTO.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

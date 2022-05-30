@@ -8,13 +8,12 @@ namespace HotelBLL
 {
     public interface IHotelBusinessLogic
     {
-        //public HotelModel[] GetAvailableHotelModels();
+        public HotelAvailability[] GetHotelAvailabilities(Room room);
+        public Hotel[] GetHotel();
         public Hotel? GetHotel(Guid HotelId);
         public Room? GetRoom(Hotel hotel, Guid RoomId);
-        //public HotelAvailability[] GetHotelAvailabilities(HotelModel hotelModel);
+        public Hotel[] GetAllHotelAvailabilities();
         public HotelBooking? GetHotelBooking(Guid HotelBookingId);
-        //public HotelModel? GetHotelModel(Guid HotelModelId);
-
 
         public HotelBooking Book(Guid HotelId, Guid RoomId, DateTime From, DateTime To, DateTime rentedTo, Person guest);
 
@@ -47,6 +46,12 @@ namespace HotelBLL
                 throw new Exception(message);
             }
             Room? room = _dal.GetRoom(hotel, RoomId);
+            if (room == null)
+            {
+                string message = "Invalid Room GUID : " + RoomId;
+                _logger.LogError(message);
+                throw new Exception(message);
+            }
             return _dal.Book(room, guest, From, To, rentedTo);
         }
 
@@ -76,10 +81,10 @@ namespace HotelBLL
             return _dal.ConfirmBooking(hb);
         }
 
-        //public HotelModel[] GetAvailableHotelModels()
-        //{
-        //    return _dal.GetAvailableCarModels();
-        //}
+        public HotelAvailability[] GetHotelAvailabilities(Room room)
+        {
+            return _dal.GetHotelAvailabilities(room);
+        }
 
         public BookingCancellation? GetBookingCancellation(HotelBooking hotelBooking)
         {
@@ -91,10 +96,6 @@ namespace HotelBLL
             return _dal.GetBookingConfirmation(hotelBooking);
         }
 
-        //public HotelAvailability[] GetHotelAvailabilities(HotelModel model)
-        //{
-        //    return _dal.GetHotelAvailabilities(model);
-        //}
 
         public HotelBooking? GetHotelBooking(Guid HotelBookingId)
         {
@@ -111,14 +112,19 @@ namespace HotelBLL
             return _dal.GetHotel(HotelId);
         }
 
-        //public HotelModel? GetHotelModel(Guid HotelModelId)
-        //{
-        //    return _dal.GetHotelModel(HotelModelId);
-        //}
-
         public Room? GetRoom(Hotel hotel, Guid RoomId)
         {
             return _dal.GetRoom(hotel, RoomId);
+        }
+
+        public Hotel[] GetHotel()
+        {
+            return _dal.GetHotel();
+        }
+
+        public Hotel[] GetAllHotelAvailabilities()
+        {
+            return _dal.GetAllHotelAvailabilities();
         }
         #endregion
     }
