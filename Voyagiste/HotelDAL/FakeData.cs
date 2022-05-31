@@ -8,7 +8,6 @@ namespace HotelDAL
     {
         private static FakeData? Singleton;
 
-        //À compléter ici les list
         internal static readonly Title[] titles = {
             new Title("M."),
             new Title("Mme")
