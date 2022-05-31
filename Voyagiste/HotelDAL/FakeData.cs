@@ -70,15 +70,6 @@ namespace HotelDAL
             new Room(new Guid("f98befd5-7a4a-44bb-9043-1090ad405644"), hotels[2], "Chambre303")
         };
 
-        //  /!\ À supprimer /!\ Je le garde seulement pour un back-up si jamais on a besoin de ça - Nicolas
-        //#region HotelBookings
-        //internal static readonly HotelBooking[] hotelBookings = {
-        //new HotelBooking(new Guid(" "), rooms[0], guests[0], new DateTime(2022, 5, 11)),
-        //new HotelBooking(new Guid(" "), rooms[1], guests[1], new DateTime(2023, 10, 12)),
-        //new HotelBooking(new Guid(" "), rooms[2], guests[3], new DateTime(2024, 12, 13))
-        //};
-        //#endregion
-
         internal List<HotelAvailability> hotelAvailabilities;
         internal List<HotelBooking> hotelBookings;
         internal List<BookingConfirmation> bookingConfirmations;
