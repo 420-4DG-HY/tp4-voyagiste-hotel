@@ -136,12 +136,6 @@ namespace HotelDAL
 
         public Hotel[] GetHotel()
         {
-            //Test pour savoir si la méthode est fonctionnel (juste FakeData est null)
-            //Hotel[] hotels = {
-            //    new Hotel(new Guid("54973543-6cf3-4c88-8b47-f48d87bcf392"), new Address(new Guid("6e746e0d-1b8d-494a-9359-34bfc155f58f"), new Country("Canada"), new Region("Oussa"), new City("Laval"), new PostalCode("B3RR3B"), "404, rue Chezpasou"))
-            //};
-            //return hotels.Distinct().ToArray();
-
             return FakeData.hotels.Distinct().ToArray();
         }
     }
