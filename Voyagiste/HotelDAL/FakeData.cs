@@ -56,7 +56,7 @@ namespace HotelDAL
         {
             new Address(new Guid("6e746e0d-1b8d-494a-9359-34bfc155f58f"), countries[0], regions[0], cities[0], postalCodes[0], "404, rue Chezpasou"),
             new Address(new Guid("72f403bd-3906-4928-a384-c815e6131f93"), countries[0], regions[1], cities[1], postalCodes[1], "405, rue Chuiou"),
-            new Address(new Guid("639137dc-650c-4f09-96a0-67573aa6e05d"), countries[1], regions[2], cities[2], postalCodes[2], "505, rue Chuiperdu")
+            new Address(new Guid("639137dc-650c-4f09-96a0-67573aa6e05d"), countries[1], regions[2], cities[1], postalCodes[2], "505, rue Chuiperdu")
         };
 
         internal static readonly Hotel[] hotels = {
